@@ -1,0 +1,186 @@
+@import "tailwindcss";
+
+@theme {
+  /* Fonts - Poppins for headings, Inter for body */
+  --font-heading: "Merriweather", sans-serif;
+  --font-body: "Noto Sans", sans-serif;
+
+  /* Custom breakpoint */
+  --breakpoint-2xl: 100rem;
+
+
+  /* ===== FONT SIZES ===== */
+  --text-xs: 12px;
+  --text-sm: 14px;
+  --text-base: 16px;
+  --text-lg: 18px;
+  --text-xl: 20px;
+  --text-2xl: 24px;
+  --text-3xl: 27px;
+  --text-4xl: 30px;
+  --text-5xl: 36px;
+  --text-6xl: 40px;
+  --text-7xl: 44px;
+  --text-8xl: 53px;
+  --text-9xl: 62px;
+  --text-10xl: 70px;
+
+  /* Line Heights */
+  --leading-none: 1;
+  --leading-tight: 1.1;
+  --leading-snug: 1.15;
+  --leading-normal: 1.3;
+  --leading-relaxed: 1.5;
+
+  /* ===== BACKGROUNDS ===== */
+  --color-white: #FFFFFF;
+  --color-page: #F9F7F3;
+  --color-light: #Fef2eb;
+  --color-header: #F4D5CC;
+  --color-button-green: #E29F88;
+  --color-about-bg: #FCF4E9;
+
+
+  /* ===== TEXT COLORS ===== */
+  --color-primary: #123E39;
+  --color-secondary: #3D3D3D;
+  --color-dark: #2B2B2B;
+  --color-heading: #123E39;
+  --color-muted: #666666;
+  --color-placeholder: #7E7E7E;
+  --color-line: #769063;
+
+  /* ===== ACCENT COLORS ===== */
+  --color-accent-gold: #F39C31;
+  --color-accent-brown: #A3733E;
+  --color-accent-tan: #84633F;
+  --color-accent-green: #d8ab94;
+  --color-accent-green-dark: #A54025;
+  --color-accent-green-light: #E29F88;
+
+
+  /* ===== BUTTON COLORS ===== */
+  --color-button-primary: #A54025;
+  --color-button-primary-hover: #87341e;
+  --color-button-dark: #A54025;
+  --color-button-bg: #FEF2EB;
+
+  /* ===== FORM COLORS ===== */
+  --color-input-bg: #F4D5CC;
+  --color-input-border: #E29F88;
+  --color-input-text: #5C5853;
+  --color-input-placeholder: #7E7E7E;
+}
+
+@layer base {
+  body {
+    @apply font-body;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply font-heading;
+  }
+}
+
+@layer utilities {
+
+  /* ===== CONTAINER ===== */
+  .container {
+    width: 100%;
+    max-width: none;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 1rem;
+    padding-right: 1rem;
+
+    @media (min-width: 1280px) {
+      max-width: 1280px;
+      padding-left: 1.5rem;
+      padding-right: 1.5rem;
+    }
+
+    @media (min-width: 1600px) {
+      max-width: 1440px;
+    }
+  }
+
+  .pt-navbar {
+    @apply pt-20 sm:pt-30 lg:pt-35;
+  }
+
+  /* ===== FORM UTILITIES ===== */
+
+  .form-label {
+    @apply block text-sm sm:text-base lg:text-lg text-primary mb-2 sm:mb-3;
+  }
+
+  .form-input {
+    @apply w-full p-3 sm:p-4 lg:p-5 border border-accent-green-light rounded-xl focus:outline-none focus:border-accent-green-dark bg-light text-sm sm:text-base lg:text-lg placeholder:text-placeholder transition-colors;
+  }
+
+  .radio-label {
+    @apply text-sm sm:text-base lg:text-lg text-secondary cursor-pointer;
+  }
+
+  .form-section {
+    @apply relative bg-white rounded-2xl sm:rounded-[28px] lg:rounded-[32px] border border-accent-green-light p-5 sm:p-6 lg:p-8 xl:p-10 pt-12 sm:pt-14 mt-10 sm:mt-12;
+  }
+
+  .form-section-header {
+    @apply absolute -top-5 sm:-top-6 left-4 sm:left-6 lg:left-8 bg-accent-green-dark text-white border border-accent-green-light px-4 py-1.5 sm:px-5 sm:py-2 lg:px-6 lg:py-2 rounded-full text-base sm:text-lg lg:text-xl font-semibold;
+  }
+
+}
+
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
+.datepicker-input {
+  @apply w-full p-3 sm:p-4 lg:p-5 border border-accent-green-light rounded-xl bg-light text-sm sm:text-base lg:text-lg placeholder:text-placeholder;
+}
+/* ── Google Translate widget ── */
+.goog-te-banner-frame,
+.skiptranslate > iframe { display: none !important; }
+body { top: 0px !important; }
+.goog-tooltip, .goog-tooltip:hover { display: none !important; }
+.goog-text-highlight { background: transparent !important; border: none !important; box-shadow: none !important; }
+
+/* Hide branding, keep only the <select> */
+.goog-te-gadget { font-size: 0 !important; }
+.goog-te-gadget > span,
+.goog-te-gadget a { display: none !important; }
+.goog-te-gadget > div { display: inline-flex !important; align-items: center !important; }
+
+/* Style the native select to match the navbar */
+.goog-te-combo {
+  background: rgba(255,255,255,0.1) !important;
+  border: 1px solid rgba(255,255,255,0.22) !important;
+  border-radius: 8px !important;
+  color: rgba(255,255,255,0.88) !important;
+  padding: 5px 10px !important;
+  font-size: 13px !important;
+  font-family: inherit !important;
+  cursor: pointer !important;
+  outline: none !important;
+  transition: background 0.2s, border-color 0.2s !important;
+}
+.goog-te-combo:hover,
+.goog-te-combo:focus {
+  background: rgba(255,255,255,0.2) !important;
+  border-color: rgba(255,255,255,0.4) !important;
+}
+.goog-te-combo option {
+  background: #1c2b1f !important;
+  color: #f0ece4 !important;
+}

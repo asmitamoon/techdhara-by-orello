@@ -1,0 +1,40 @@
+{{- if .Values.mongodb.enabled }}
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: {{ include "innovation-guild.fullname" . }}-mongodb
+  labels:
+    {{- include "innovation-guild.labels" . | nindent 4 }}
+    app.kubernetes.io/component: mongodb
+spec:
+  serviceName: {{ include "innovation-guild.fullname" . }}-mongodb
+  replicas: 1
+  selector:
+    matchLabels:
+      {{- include "innovation-guild.selectorLabels" . | nindent 6 }}
+      app.kubernetes.io/component: mongodb
+  template:
+    metadata:
+      labels:
+        {{- include "innovation-guild.selectorLabels" . | nindent 8 }}
+        app.kubernetes.io/component: mongodb
+    spec:
+      containers:
+        - name: mongodb
+          image: "{{ .Values.mongodb.image }}"
+          ports:
+            - name: mongodb
+              containerPort: {{ .Values.mongodb.port }}
+          volumeMounts:
+            - name: mongodb-data
+              mountPath: /data/db
+  volumeClaimTemplates:
+    - metadata:
+        name: mongodb-data
+      spec:
+        accessModes: [ "ReadWriteOnce" ]
+        storageClassName: "{{ .Values.mongodb.persistence.storageClass }}"
+        resources:
+          requests:
+            storage: "{{ .Values.mongodb.persistence.size }}"
+{{- end }}

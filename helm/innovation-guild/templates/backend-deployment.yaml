@@ -1,0 +1,98 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ include "innovation-guild.fullname" . }}-backend
+  labels:
+    {{- include "innovation-guild.labels" . | nindent 4 }}
+    app.kubernetes.io/component: backend
+spec:
+  replicas: {{ .Values.backend.replicaCount }}
+  selector:
+    matchLabels:
+      {{- include "innovation-guild.selectorLabels" . | nindent 6 }}
+      app.kubernetes.io/component: backend
+  template:
+    metadata:
+      labels:
+        {{- include "innovation-guild.selectorLabels" . | nindent 8 }}
+        app.kubernetes.io/component: backend
+    spec:
+      containers:
+        - name: backend
+          image: "{{ .Values.backend.image.repository }}:{{ .Values.backend.image.tag | default .Chart.AppVersion }}"
+          imagePullPolicy: {{ .Values.backend.image.pullPolicy }}
+          ports:
+            - name: http
+              containerPort: {{ .Values.backend.containerPort }}
+              protocol: TCP
+          {{- if .Values.backend.integrationsSecretName }}
+          envFrom:
+            - secretRef:
+                name: {{ .Values.backend.integrationsSecretName | quote }}
+          {{- end }}
+          env:
+            - name: PORT
+              value: "{{ .Values.backend.containerPort }}"
+            - name: NODE_ENV
+              value: "{{ .Values.backend.env.NODE_ENV }}"
+            - name: CACHE_ENABLED
+              value: "{{ .Values.backend.env.CACHE_ENABLED }}"
+            - name: JWT_ACCESS_EXPIRY
+              value: "{{ .Values.backend.env.JWT_ACCESS_EXPIRY }}"
+            - name: JWT_REFRESH_EXPIRY
+              value: "{{ .Values.backend.env.JWT_REFRESH_EXPIRY }}"
+            {{- if not .Values.backend.integrationsSecretName }}
+            - name: GOOGLE_CLIENT_ID
+              value: "{{ .Values.backend.env.GOOGLE_CLIENT_ID }}"
+            - name: GOOGLE_CLIENT_SECRET
+              value: "{{ .Values.backend.env.GOOGLE_CLIENT_SECRET }}"
+            {{- end }}
+            - name: FRONTEND_URL
+              value: {{ .Values.backend.frontendUrl | default (printf "%s://%s" (ternary "https" "http" .Values.ingress.tls.enabled) .Values.global.domain) | quote }}
+            - name: GOOGLE_REDIRECT_URI
+              value: {{ .Values.backend.googleRedirectUri | default (printf "%s://%s/api/auth/google/callback" (ternary "https" "http" .Values.ingress.tls.enabled) .Values.global.domain) | quote }}
+            - name: JWT_ACCESS_SECRET
+              valueFrom:
+                secretKeyRef:
+                  name: {{ include "innovation-guild.fullname" . }}-secrets
+                  key: jwt-access-secret
+            - name: JWT_REFRESH_SECRET
+              valueFrom:
+                secretKeyRef:
+                  name: {{ include "innovation-guild.fullname" . }}-secrets
+                  key: jwt-refresh-secret
+            {{- if .Values.mongodb.enabled }}
+            - name: MONGODB_URI
+              value: "mongodb://{{ include "innovation-guild.fullname" . }}-mongodb:{{ .Values.mongodb.port }}/innovation_guild"
+            {{- end }}
+            {{- if .Values.redis.enabled }}
+            - name: REDIS_URL
+              value: "redis://{{ include "innovation-guild.fullname" . }}-redis:{{ .Values.redis.port }}"
+            {{- end }}
+            {{- if .Values.minio.enabled }}
+            - name: MINIO_ENDPOINT
+              value: "http://{{ include "innovation-guild.fullname" . }}-minio:{{ .Values.minio.port }}"
+            - name: MINIO_ACCESS_KEY
+              value: "{{ .Values.minio.rootUser }}"
+            - name: MINIO_SECRET_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: {{ include "innovation-guild.fullname" . }}-secrets
+                  key: minio-root-password
+            - name: MINIO_BUCKET
+              value: "{{ .Values.minio.defaultBuckets }}"
+            {{- end }}
+          resources:
+            {{- toYaml .Values.backend.resources | nindent 12 }}
+          livenessProbe:
+            httpGet:
+              path: /health
+              port: http
+            initialDelaySeconds: 15
+            periodSeconds: 15
+          readinessProbe:
+            httpGet:
+              path: /health
+              port: http
+            initialDelaySeconds: 10
+            periodSeconds: 15

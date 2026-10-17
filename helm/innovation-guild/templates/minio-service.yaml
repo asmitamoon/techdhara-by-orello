@@ -1,0 +1,20 @@
+{{- if .Values.minio.enabled }}
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ include "innovation-guild.fullname" . }}-minio
+  labels:
+    {{- include "innovation-guild.labels" . | nindent 4 }}
+    app.kubernetes.io/component: minio
+spec:
+  ports:
+    - port: {{ .Values.minio.port }}
+      targetPort: minio-api
+      name: minio-api
+    - port: {{ .Values.minio.consolePort }}
+      targetPort: minio-console
+      name: minio-console
+  selector:
+    {{- include "innovation-guild.selectorLabels" . | nindent 4 }}
+    app.kubernetes.io/component: minio
+{{- end }}

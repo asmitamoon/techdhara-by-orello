@@ -1,0 +1,11 @@
+1. Check deployment status of all components:
+   kubectl get pods -n {{ .Release.Namespace }} -l "app.kubernetes.io/instance={{ .Release.Name }}" -w
+
+2. Access the application:
+   - Frontend and API are exposed via the Ingress host:
+     http://{{ .Values.global.domain }}
+
+   - Make sure to map "{{ .Values.global.domain }}" to your K3s cluster IP (e.g. 127.0.0.1 if running locally on k3s) in your /etc/hosts file.
+
+3. To check backend API logs:
+   kubectl logs -n {{ .Release.Namespace }} -l "app.kubernetes.io/component=backend" -f

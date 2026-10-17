@@ -1,0 +1,51 @@
+{{- if .Values.minio.enabled }}
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ include "innovation-guild.fullname" . }}-minio
+  labels:
+    {{- include "innovation-guild.labels" . | nindent 4 }}
+    app.kubernetes.io/component: minio
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      {{- include "innovation-guild.selectorLabels" . | nindent 6 }}
+      app.kubernetes.io/component: minio
+  template:
+    metadata:
+      labels:
+        {{- include "innovation-guild.selectorLabels" . | nindent 8 }}
+        app.kubernetes.io/component: minio
+    spec:
+      containers:
+        - name: minio
+          image: "{{ .Values.minio.image }}"
+          command: ["minio", "server", "/data", "--console-address", ":{{ .Values.minio.consolePort }}"]
+          ports:
+            - name: minio-api
+              containerPort: {{ .Values.minio.port }}
+            - name: minio-console
+              containerPort: {{ .Values.minio.consolePort }}
+          env:
+            - name: MINIO_ROOT_USER
+              value: "{{ .Values.minio.rootUser }}"
+            - name: MINIO_ROOT_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: {{ include "innovation-guild.fullname" . }}-secrets
+                  key: minio-root-password
+            - name: MINIO_DEFAULT_BUCKETS
+              value: "{{ .Values.minio.defaultBuckets }}"
+          volumeMounts:
+            - name: minio-data
+              mountPath: /data
+      volumes:
+        - name: minio-data
+          {{- if .Values.minio.persistence.enabled }}
+          persistentVolumeClaim:
+            claimName: {{ include "innovation-guild.fullname" . }}-minio-pvc
+          {{- else }}
+          emptyDir: {}
+          {{- end }}
+{{- end }}

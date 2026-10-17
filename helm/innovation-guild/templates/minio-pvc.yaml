@@ -1,0 +1,16 @@
+{{- if and .Values.minio.enabled .Values.minio.persistence.enabled }}
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: {{ include "innovation-guild.fullname" . }}-minio-pvc
+  labels:
+    {{- include "innovation-guild.labels" . | nindent 4 }}
+    app.kubernetes.io/component: minio
+spec:
+  accessModes:
+    - ReadWriteOnce
+  storageClassName: "{{ .Values.minio.persistence.storageClass }}"
+  resources:
+    requests:
+      storage: "{{ .Values.minio.persistence.size }}"
+{{- end }}

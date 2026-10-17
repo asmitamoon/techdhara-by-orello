@@ -1,0 +1,17 @@
+{{- if .Values.mongodb.enabled }}
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ include "innovation-guild.fullname" . }}-mongodb
+  labels:
+    {{- include "innovation-guild.labels" . | nindent 4 }}
+    app.kubernetes.io/component: mongodb
+spec:
+  ports:
+    - port: {{ .Values.mongodb.port }}
+      targetPort: mongodb
+      name: mongodb
+  selector:
+    {{- include "innovation-guild.selectorLabels" . | nindent 4 }}
+    app.kubernetes.io/component: mongodb
+{{- end }}

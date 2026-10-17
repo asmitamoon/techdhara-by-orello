@@ -1,0 +1,60 @@
+services:
+  # Redis cache + RedisInsight UI (http://localhost:8001)
+  redis:
+    image: redis/redis-stack:latest
+    container_name: innovation-guild-redis
+    ports:
+      - "6381:6379"
+      - "8001:8001"
+    environment:
+      REDIS_ARGS: "--appendonly yes --maxmemory 256mb --maxmemory-policy allkeys-lru"
+    volumes:
+      - redis_data:/data
+    networks:
+      - innovation-guild-network
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 5s
+      timeout: 3s
+      retries: 5
+
+  # MongoDB database
+  mongo:
+    image: mongo:latest
+    container_name: innovation-guild-mongo
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongo_data:/data/db
+    networks:
+      - innovation-guild-network
+    restart: unless-stopped
+
+  # MinIO S3-compatible storage
+  minio:
+    image: minio/minio:latest
+    container_name: innovation-guild-minio
+    ports:
+      - "9000:9000"      # MinIO API
+      - "9001:9001"      # MinIO Console (Web UI)
+    environment:
+      MINIO_ROOT_USER: minioadmin
+      MINIO_ROOT_PASSWORD: minioadmin123
+      MINIO_DEFAULT_BUCKETS: innovation-guild-assets
+    volumes:
+      - minio_data:/data
+    command: server /data --console-address ":9001"
+    networks:
+      - innovation-guild-network
+    restart: unless-stopped
+
+volumes:
+  redis_data:
+  minio_data:
+  mongo_data:
+
+networks:
+  innovation-guild-network:
+    driver: bridge
+    name: innovation-guild-network

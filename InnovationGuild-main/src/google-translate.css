@@ -1,0 +1,37 @@
+/* ─── Hide Google Translate toolbar ─────────────────────────────────────── */
+/* Hides the top banner Google injects when translation is active            */
+.goog-te-banner-frame,
+.goog-te-menu-frame,
+#goog-gt-tt,
+.goog-tooltip,
+.goog-tooltip:hover,
+.skiptranslate {
+  display: none !important;
+  visibility: hidden !important;
+}
+
+/* Prevent Google from pushing the page body down */
+body {
+  top: 0 !important;
+  position: static !important;
+}
+
+/* Hide the translate element container in the HTML */
+#google_translate_element {
+  display: none !important;
+}
+
+/* ─── Language dropdown scrollbar ───────────────────────────────────────── */
+.gt-lang-list::-webkit-scrollbar {
+  width: 4px;
+}
+.gt-lang-list::-webkit-scrollbar-track {
+  background: transparent;
+}
+.gt-lang-list::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: 999px;
+}
+.gt-lang-list::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.3);
+}

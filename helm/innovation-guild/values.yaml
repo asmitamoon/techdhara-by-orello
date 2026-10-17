@@ -1,0 +1,94 @@
+# Default values for innovation-guild chart
+
+global:
+  domain: innovation-guild.local
+  jwtAccessSecret: "your-jwt-access-secret-key"
+  jwtRefreshSecret: "your-jwt-refresh-secret-key"
+
+frontend:
+  replicaCount: 1
+  image:
+    repository: local/innovation-guild-frontend
+    tag: latest
+    pullPolicy: IfNotPresent
+  containerPort: 8080
+  service:
+    type: ClusterIP
+    port: 80
+  resources:
+    limits:
+      cpu: 200m
+      memory: 256Mi
+    requests:
+      cpu: 50m
+      memory: 128Mi
+
+backend:
+  # Existing Kubernetes Secret with provider environment-variable names as keys.
+  # See INTEGRATIONS.md. Keep credentials out of committed values files.
+  integrationsSecretName: ""
+  frontendUrl: ""
+  googleRedirectUri: ""
+  replicaCount: 1
+  image:
+    repository: local/innovation-guild-backend
+    tag: latest
+    pullPolicy: IfNotPresent
+  containerPort: 5000
+  service:
+    type: ClusterIP
+    port: 5000
+  resources:
+    limits:
+      cpu: 500m
+      memory: 512Mi
+    requests:
+      cpu: 100m
+      memory: 256Mi
+  env:
+    NODE_ENV: production
+    CACHE_ENABLED: "true"
+    JWT_ACCESS_EXPIRY: 15m
+    JWT_REFRESH_EXPIRY: 7d
+    GOOGLE_CLIENT_ID: "dummy-client-id"
+    GOOGLE_CLIENT_SECRET: "dummy-client-secret"
+
+mongodb:
+  enabled: true
+  image: mongo:latest
+  port: 27017
+  persistence:
+    enabled: true
+    storageClass: local-path
+    size: 5Gi
+
+redis:
+  enabled: true
+  image: redis:alpine
+  port: 6379
+  persistence:
+    enabled: true
+    storageClass: local-path
+    size: 2Gi
+
+minio:
+  enabled: true
+  image: quay.io/minio/minio:latest
+  port: 9000
+  consolePort: 9001
+  rootUser: minioadmin
+  rootPassword: minioadmin123
+  defaultBuckets: innovation-guild-assets
+  persistence:
+    enabled: true
+    storageClass: local-path
+    size: 5Gi
+
+ingress:
+  enabled: true
+  className: traefik
+  annotations:
+    ingress.kubernetes.io/ssl-redirect: "false"
+  tls:
+    enabled: false
+    secretName: innovation-guild-tls

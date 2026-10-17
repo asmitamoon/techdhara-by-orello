@@ -1,0 +1,220 @@
+{
+  "states": [
+    {
+      "stateName": "Andhra Pradesh",
+      "tin": "37",
+      "stateCode": "AP",
+      "isUT":false
+    },
+    {
+      "stateName": "Arunachal Pradesh",
+      "tin": "12",
+      "stateCode": "AR",
+      "isUT":false
+    },
+    {
+      "stateName": "Assam",
+      "tin": "18",
+      "stateCode": "AS",
+      "isUT":false
+    },
+    {
+      "stateName": "Bihar",
+      "tin": "10",
+      "stateCode": "BR",
+      "isUT":false
+    },
+    {
+      "stateName": "Chhattisgarh",
+      "tin": "22",
+      "stateCode": "CG",
+      "isUT":false
+    },
+    {
+      "stateName": "Goa",
+      "tin": "30",
+      "stateCode": "GA",
+      "isUT":false
+    },
+    {
+      "stateName": "Gujarat",
+      "tin": "24",
+      "stateCode": "GJ",
+      "isUT":false
+    },
+    {
+      "stateName": "Haryana",
+      "tin": "06",
+      "stateCode": "HR",
+      "isUT":false
+    },
+    {
+      "stateName": "Himachal Pradesh",
+      "tin": "02",
+      "stateCode": "HP",
+      "isUT":false
+    },
+    {
+      "stateName": "Jharkhand",
+      "tin": "20",
+      "stateCode": "JH",
+      "isUT":false
+    },
+    {
+      "stateName": "Karnataka",
+      "tin": "29",
+      "stateCode": "KA",
+      "isUT":false
+    },
+    {
+      "stateName": "Kerala",
+      "tin": "32",
+      "stateCode": "KL",
+      "isUT":false
+    },
+    {
+      "stateName": "Madhya Pradesh",
+      "tin": "23",
+      "stateCode": "MP",
+      "isUT":false
+    },
+    {
+      "stateName": "Maharashtra",
+      "tin": "27",
+      "stateCode": "MH",
+      "isUT":false
+    },
+    {
+      "stateName": "Manipur",
+      "tin": "14",
+      "stateCode": "MN",
+      "isUT":false
+    },
+    {
+      "stateName": "Meghalaya",
+      "tin": "17",
+      "stateCode": "ML",
+      "isUT":false
+    },
+    {
+      "stateName": "Mizoram",
+      "tin": "15",
+      "stateCode": "MZ",
+      "isUT":false
+    },
+    {
+      "stateName": "Nagaland",
+      "tin": "13",
+      "stateCode": "NL",
+      "isUT":false
+    },
+    {
+      "stateName": "Odisha",
+      "tin": "21",
+      "stateCode": "OD",
+      "isUT":false
+    },
+    {
+      "stateName": "Punjab",
+      "tin": "03",
+      "stateCode": "PB",
+      "isUT":false
+    },
+    {
+      "stateName": "Rajasthan",
+      "tin": "08",
+      "stateCode": "RJ",
+      "isUT":false
+    },
+    {
+      "stateName": "Sikkim",
+      "tin": "11",
+      "stateCode": "SK",
+      "isUT":false
+    },
+    {
+      "stateName": "Tamil Nadu",
+      "tin": "33",
+      "stateCode": "TN",
+      "isUT":false
+    },
+    {
+      "stateName": "Telangana",
+      "tin": "36",
+      "stateCode": "TS",
+      "isUT":false
+    },
+    {
+      "stateName": "Tripura",
+      "tin": "16",
+      "stateCode": "TR",
+      "isUT":false
+    },
+    {
+      "stateName": "Uttar Pradesh",
+      "tin": "09",
+      "stateCode": "UP",
+      "isUT":false
+    },
+    {
+      "stateName": "Uttarakhand",
+      "tin": "05",
+      "stateCode": "UK",
+      "isUT":false
+    },
+    {
+      "stateName": "West Bengal",
+      "tin": "19",
+      "stateCode": "WB",
+      "isUT":false
+    },
+    {
+      "stateName": "Andaman and Nicobar Islands",
+      "tin": "35",
+      "stateCode": "AN",
+      "isUT":true
+    },
+    {
+      "stateName": "Chandigarh",
+      "tin": "04",
+      "stateCode": "CH",
+      "isUT":true
+    },
+    {
+      "stateName": "Dadra & Nagar Haveli and Daman & Diu",
+      "tin": "26",
+      "stateCode": "DN",
+      "isUT":true
+    },
+    {
+      "stateName": "Delhi",
+      "tin": "07",
+      "stateCode": "DL",
+      "isUT":true 
+    },
+    {
+      "stateName": "Jammu and Kashmir",
+      "tin": "01",
+      "stateCode": "JK",
+      "isUT":true
+    },
+    {
+      "stateName": "Ladakh",
+      "tin": "38",
+      "stateCode": "LA",
+      "isUT":true
+    },
+    {
+      "stateName": "Lakshadweep",
+      "tin": "31",
+      "stateCode": "LD",
+      "isUT":true
+    },
+    {
+      "stateName": "Puducherry",
+      "tin": "34",
+      "stateCode": "PY",
+      "isUT":true
+    }
+  ]
+}

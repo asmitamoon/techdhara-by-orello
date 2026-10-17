@@ -1,0 +1,35 @@
+# Secrets / env
+.secret.txt
+.env
+.env.*
+*.env
+!.env.example
+.integrations.env
+
+# Dependencies & build output
+node_modules/
+dist/
+build/
+coverage/
+
+# Data dumps, archives, docker image exports (may contain user data)
+*.zip
+*.tar.gz
+*.tgz
+*.archive
+spaces-dump/
+index.json
+manifest.json
+blobs/
+
+# Real user data used for migration (names, emails, phones, passwords)
+InnovationGuildBackend-main/scripts/data/migration.xlsx
+
+# Ops script containing server credentials
+restore-staging-data.sh
+
+# OS / editor
+.DS_Store
+.vscode/
+.idea/
+*.log

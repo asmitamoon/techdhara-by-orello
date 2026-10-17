@@ -1,0 +1,18 @@
+global:
+  domain: techdhara-staging.t4gc.in
+
+ingress:
+  enabled: true
+  className: traefik
+  annotations:
+    cert-manager.io/cluster-issuer: "letsencrypt-prod"
+    ingress.kubernetes.io/ssl-redirect: "true"
+  tls:
+    enabled: true
+    secretName: techdhara-staging-tls
+
+backend:
+  # Reference to the Kubernetes secret holding third-party credentials
+  # (Google OAuth, Twilio, SendGrid). See CREDENTIALS_SETUP_GUIDE.md.
+  integrationsSecretName: "backend-integrations-secret"
+
