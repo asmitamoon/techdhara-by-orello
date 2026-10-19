@@ -47,7 +47,7 @@ export const innovationRequestSchema = z.object({
   problemSize: z.string().min(1, "Problem size estimate is required").max(100, "Too long (max 100 characters)"),
   endProducts: z.string().min(1, "End products info is required").max(200, "Too long (max 200 characters)"),
   salesChannels: z.string().min(1, "Sales channels info is required").max(200, "Too long (max 200 characters)"),
-  newChannels: z.string().min(1, "New channels info is required").max(200, "Too long (max 200 characters)"),
+  newChannels: z.string().min(1, "Please select an option").max(200, "Too long (max 200 characters)"),
   currentRevenue: numericStringSchema("Current revenue is required").refine(val => val > 0, "Amount must be greater than zero"),
   expectedRevenue: numericStringSchema("Expected revenue is required").refine(val => val > 0, "Amount must be greater than zero"),
   machineBudget: numericStringSchema("Budget is required").refine(val => val > 0, "Amount must be greater than zero"),

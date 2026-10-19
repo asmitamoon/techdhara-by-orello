@@ -439,9 +439,9 @@ const submitForApproval = catchAsync(async (req, res, next) => {
     return next(new AppError('You can only submit your own innovations', 403));
   }
 
-  if (req.user.status !== 'APPROVED') {
-    return next(new AppError('Your account must be approved before you can submit innovations for review', 403));
-  }
+  // Innovators no longer need to wait for their own registration approval before
+  // submitting. Admin still reviews the innovator and each innovation separately.
+  // (Rejected, suspended or banned accounts are already blocked by restrictTo.)
 
   if (!['DRAFT', 'REJECTED'].includes(innovation.status)) {
     return next(new AppError(`Cannot submit innovation with status ${innovation.status}`, 400));

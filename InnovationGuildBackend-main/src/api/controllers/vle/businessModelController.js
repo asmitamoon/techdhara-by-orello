@@ -5,6 +5,7 @@ const VleProfile = require('../../../models/VleProfile');
 const InnovatorProfile = require('../../../models/InnovatorProfile');
 const { AppError } = require('../../../utils/errorHandler');
 const catchAsync = require('../../../utils/catchAsync');
+const { sendBusinessModelSubmittedToAdmin } = require('../../../services/notification/admin/pilotNotification');
 
 const createMyBusinessModel = catchAsync(async (req, res, next) => {
   const vleId = req.user._id;
@@ -42,6 +43,10 @@ const createMyBusinessModel = catchAsync(async (req, res, next) => {
     pilotId: pilot._id,
     ...fields
   });
+
+  sendBusinessModelSubmittedToAdmin(businessModel, req.user).catch(err =>
+    console.error('Failed to send business model notification to admin:', err.message)
+  );
 
   await businessModel.populate('innovationId', 'innovationName');
 

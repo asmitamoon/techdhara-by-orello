@@ -77,7 +77,7 @@ export default function ReportsAndAnalytics() {
       <hr className="border-accent-green-light mb-8" />
 
       <h2 className="text-3xl font-normal text-[#273228] mb-1">Executive Summary</h2>
-      <p className="text-gray-500 text-sm mb-6">Impact snapshot across the Innovation Guild ecosystem</p>
+      <p className="text-gray-500 text-sm mb-6">Impact snapshot across the TechDhaara ecosystem</p>
 
       <div className="grid grid-cols-4 gap-4">
         {STATS.map((stat, i) => (

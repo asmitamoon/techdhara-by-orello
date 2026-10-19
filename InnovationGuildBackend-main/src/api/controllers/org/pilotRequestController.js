@@ -9,6 +9,7 @@ const FacingSimilarProblem = require('../../../models/FacingSimilarProblem');
 const { AppError } = require('../../../utils/errorHandler');
 const catchAsync = require('../../../utils/catchAsync');
 const { sendPilotInterestNotification } = require('../../../services/notification/innovator/pilotInterestNotification');
+const { sendPilotRequestToAdmin } = require('../../../services/notification/admin/pilotNotification');
 
 const createPilotRequestForVle = catchAsync(async (req, res, next) => {
   const { vleId } = req.params;
@@ -79,6 +80,10 @@ const createPilotRequestForVle = catchAsync(async (req, res, next) => {
       console.error('Failed to send pilot interest notification:', err.message)
     );
   }
+
+  sendPilotRequestToAdmin(vleUser, req.user, innovation, { raisedByOrg: true }).catch(err =>
+    console.error('Failed to send pilot request notification to admin:', err.message)
+  );
 
   res.status(201).json({
     status: 'success',

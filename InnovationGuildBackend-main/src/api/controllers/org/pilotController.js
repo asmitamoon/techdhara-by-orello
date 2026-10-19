@@ -6,6 +6,7 @@ const Innovation = require('../../../models/Innovation');
 const { AppError } = require('../../../utils/errorHandler');
 const catchAsync = require('../../../utils/catchAsync');
 const { sendPilotStatusChanged } = require('../../../services/notification/pilot/pilotNotification');
+const { sendPilotStatusChangedToAdmin } = require('../../../services/notification/admin/pilotNotification');
 
 // Shared scope helper — resolves pilot and verifies it belongs to an org-managed VLE
 const checkPilotInScope = async (pilotId, orgScope) => {
@@ -91,6 +92,7 @@ const startOrgTrial = catchAsync(async (req, res, next) => {
   await pilot.save();
 
   sendPilotStatusChanged(pilot, 'TRIAL_STARTED').catch(() => {});
+  sendPilotStatusChangedToAdmin(pilot, 'TRIAL_STARTED', req.user).catch(() => {});
 
   res.status(200).json({ status: 'success', message: 'Trial started successfully', data: { pilot } });
 });
@@ -120,6 +122,7 @@ const markOrgPilotAsImplemented = catchAsync(async (req, res, next) => {
   );
 
   sendPilotStatusChanged(pilot, 'IMPLEMENTED').catch(() => {});
+  sendPilotStatusChangedToAdmin(pilot, 'IMPLEMENTED', req.user).catch(() => {});
 
   res.status(200).json({ status: 'success', message: 'Pilot marked as implemented successfully', data: { pilot } });
 });
@@ -138,6 +141,7 @@ const cancelOrgPilot = catchAsync(async (req, res, next) => {
   await pilot.save();
 
   sendPilotStatusChanged(pilot, 'CANCELLED').catch(() => {});
+  sendPilotStatusChangedToAdmin(pilot, 'CANCELLED', req.user).catch(() => {});
 
   res.status(200).json({ status: 'success', message: 'Pilot cancelled successfully', data: { pilot } });
 });
@@ -162,6 +166,7 @@ const startOrgPilot = catchAsync(async (req, res, next) => {
   await pilot.save();
 
   sendPilotStatusChanged(pilot, 'PILOT_STARTED').catch(() => {});
+  sendPilotStatusChangedToAdmin(pilot, 'PILOT_STARTED', req.user).catch(() => {});
 
   res.status(200).json({ status: 'success', message: 'Pilot started successfully', data: { pilot } });
 });

@@ -707,11 +707,12 @@ const InnovationProfileForm = forwardRef(({ initialData, isEditMode, onEditToggl
                 </div>
                 <div>
                   <label htmlFor="suitableTerrains" className="form-label">Suitable Terrains</label>
-                  <input 
+                  <textarea 
                     id="suitableTerrains"
-                    type="text" 
-                    className={inputClass(errors.suitableTerrains)} 
-                    placeholder="Your Answer"
+                    rows={3} 
+                    maxLength={500}
+                    className={`${inputClass(errors.suitableTerrains)} resize-none`} 
+                    placeholder="Your Answer (up to 500 characters)"
                     readOnly={!isEditMode} 
                     {...register('suitableTerrains')}
                   />

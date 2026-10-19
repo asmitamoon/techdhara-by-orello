@@ -72,7 +72,7 @@ Rainmatter Foundation is the parent organization of TechDhaara and is the primar
               </p>
 
               <p className="text-white text-xs sm:text-sm leading-relaxed">
-                <span className="font-semibold">WASSAN India is the anchor organization for Village Level Entrepreneurship network of Innovation Guild. </span>
+                <span className="font-semibold">WASSAN India is the anchor organization for Village Level Entrepreneurship network of TechDhaara. </span>
               </p>
             </div>
           </div>

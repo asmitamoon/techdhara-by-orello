@@ -64,7 +64,7 @@ const TheSolution = () => {
       </h3>
       
       <p className="text-sm sm:text-xl text-[#274E31] mb-2">
-        Innovation Guild partners with nodal organizations that lead rural livelihood initiatives across multiple regions.
+        TechDhaara partners with nodal organizations that lead rural livelihood initiatives across multiple regions.
       </p>
       
       <p className="text-xs sm:text-sm italic text-[#274E31]">
@@ -89,7 +89,7 @@ const TheSolution = () => {
       </h3>
       
       <p className="text-sm sm:text-xl text-[#274E31] mb-2">
-        Through nodal organizations, Innovation Guild works with branches, ground partners, and affiliated organizations such as FPOs to identify real technology gaps and field challenges.
+        Through nodal organizations, TechDhaara works with branches, ground partners, and affiliated organizations such as FPOs to identify real technology gaps and field challenges.
       </p>
       
       <p className="text-xs sm:text-sm italic text-[#274E31]">
@@ -115,7 +115,7 @@ const TheSolution = () => {
       </h3>
       
       <p className="text-sm sm:text-xl text-[#274E31] mb-2">
-        Innovation Guild partners with nodal organizations that lead rural livelihood initiatives across multiple regions.
+        TechDhaara partners with nodal organizations that lead rural livelihood initiatives across multiple regions.
       </p>
       
       <p className="text-xs sm:text-sm italic text-[#274E31]">
@@ -186,7 +186,7 @@ const VideoSection = () => {
               {/* Bottom Right Name Badge */}
               <div className="absolute bottom-4 right-4 sm:bottom-6 sm:right-6 bg-white/90 backdrop-blur-sm px-4 py-2 sm:px-6 sm:py-3 rounded-lg z-20">
                 <p className="text-[#274E31] font-medium text-sm sm:text-base">Asmita Moon</p>
-                <p className="text-[#274E31] text-xs sm:text-sm italic">CEO, Innovation Guild</p>
+                <p className="text-[#274E31] text-xs sm:text-sm italic">CEO, TechDhaara</p>
               </div>
             </div>
           </div>

@@ -115,7 +115,7 @@ const ServiceRequestForm = ({ id }) => {
             
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-5 sm:gap-6 lg:gap-8">
               <div>
-                <label className="form-label">Local Unit name (Branch / FPO / SHG)<span className="text-red-500">*</span></label>
+                <label className="form-label">Local Unit name (Branch / FPO / SHG / Other)<span className="text-red-500">*</span></label>
                 <div className="flex flex-wrap gap-4 sm:gap-6 mt-3 sm:mt-4">
                   {UNIT_TYPE_OPTIONS.map((opt) => (
                     <label key={opt.value} className="flex items-center gap-2 sm:gap-3 cursor-pointer">
@@ -173,7 +173,7 @@ const ServiceRequestForm = ({ id }) => {
                 {errors.cost && <p className="text-red-500 text-xs lg:text-sm mt-1">{errors.cost.message}</p>}
               </div>
               <div>
-                <label className="form-label">Who has the ownership? (Dvara, FPO or an Individual)<span className="text-red-500">*</span></label>
+                <label className="form-label">Who has the ownership? (Techsetu, FPO or an Individual)<span className="text-red-500">*</span></label>
                 <div className="flex flex-wrap gap-4 sm:gap-6 mt-3 sm:mt-4">
                   {OWNERSHIP_OPTIONS.map((opt) => (
                     <label key={opt.value} className="flex items-center gap-2 sm:gap-3 cursor-pointer">

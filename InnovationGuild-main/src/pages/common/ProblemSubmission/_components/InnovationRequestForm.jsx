@@ -18,7 +18,9 @@ import {
 } from '../../../../utils/constants/innovationConstants';
 import {
   PROBLEM_CATEGORY_OPTIONS,
-  PROBLEM_SUBCATEGORY_OPTIONS
+  PROBLEM_SUBCATEGORY_OPTIONS,
+  NEW_CHANNEL_OPTIONS,
+  withLegacyOption
 } from '../../../../utils/constants/problemConstants';
 import {
   useCreateProblem,
@@ -528,7 +530,14 @@ const InnovationRequestForm = ({ id }) => {
 
             <div>
               <label htmlFor="newChannels" className="form-label">Is the organization (AO) introducing new sales channels?<span className="text-red-500">*</span></label>
-              <input id="newChannels" type="text" {...register('newChannels')} className={`form-input ${errors.newChannels ? 'border-red-500' : ''}`} placeholder="Your Answer" />
+              <div className="flex flex-wrap gap-6 mt-3">
+                {withLegacyOption(NEW_CHANNEL_OPTIONS, watch('newChannels')).map((opt) => (
+                  <label key={opt.value} className="flex items-center gap-2 sm:gap-3 cursor-pointer">
+                    <input type="radio" value={opt.value} {...register('newChannels')} className="w-4 h-4 text-accent-green-dark focus:ring-accent-green" />
+                    <span className="radio-label">{opt.label}</span>
+                  </label>
+                ))}
+              </div>
               {errors.newChannels && <p className="text-red-500 text-xs lg:text-sm mt-1">{errors.newChannels.message}</p>}
             </div>
 

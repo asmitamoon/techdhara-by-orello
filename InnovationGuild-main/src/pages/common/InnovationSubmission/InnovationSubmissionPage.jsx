@@ -1,9 +1,7 @@
 import { useState, useEffect, useRef } from 'react';
-import { useSelector } from 'react-redux';
 import { useForm, Controller } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useNavigate, useParams } from 'react-router';
-import { selectUser } from '../../../store/slices/authSlice';
 import toast from 'react-hot-toast';
 import { useCreateInnovation, useSubmitInnovationForApproval, useUpdateInnovation } from '../../../hooks/mutations/innovator';
 import { useGetInnovationById } from '../../../hooks/queries/innovator';
@@ -170,8 +168,6 @@ const buildUpdateFormData = (data, originalYoutubeUrls = []) => {
 const InnovationSubmissionPage = () => {
   const { id } = useParams();
   const isEditMode = !!id;
-  const user = useSelector(selectUser);
-  const isApproved = user?.status === 'APPROVED';
 
   // Helper component for conditional "other" input fields
   const ConditionalOtherInput = ({ show, fieldName, placeholder, register, error }) => {
@@ -804,7 +800,7 @@ const InnovationSubmissionPage = () => {
                   </div>
                   <div>
                     <label htmlFor="suitableTerrains" className="form-label">Suitable Terrains</label>
-                    <input id="suitableTerrains" type="text" {...register('suitableTerrains')} className={`form-input ${errors.suitableTerrains ? 'border-red-500' : ''}`} placeholder="Your Answer" />
+                    <textarea id="suitableTerrains" rows={3} maxLength={500} {...register('suitableTerrains')} className={`form-input resize-none ${errors.suitableTerrains ? 'border-red-500' : ''}`} placeholder="Your Answer (up to 500 characters)" />
                     {errors.suitableTerrains && <p className="text-red-500 text-xs lg:text-sm mt-1">{errors.suitableTerrains.message}</p>}
                   </div>
                 </div>
@@ -890,18 +886,16 @@ const InnovationSubmissionPage = () => {
           </div>
 
           <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 mt-8 sm:mt-10 lg:mt-12">
-            {isApproved && (
-              <button
-                type="submit"
-                onClick={() => { submitIntentRef.current = 'submit'; }}
-                disabled={isLoading}
-                className="w-full sm:w-auto px-6 py-2.5 sm:px-8 sm:py-3 lg:py-4 bg-button-dark text-white text-base sm:text-lg border border-accent-green rounded-xl hover:bg-primary transition-colors font-medium cursor-pointer font-heading disabled:opacity-50 disabled:cursor-not-allowed"
-              >
-                {isLoading && submitIntentRef.current === 'submit'
-                  ? (isEditMode ? 'Updating...' : 'Submitting...')
-                  : (isEditMode ? 'Update & Submit' : 'Submit Innovation')}
-              </button>
-            )}
+            <button
+              type="submit"
+              onClick={() => { submitIntentRef.current = 'submit'; }}
+              disabled={isLoading}
+              className="w-full sm:w-auto px-6 py-2.5 sm:px-8 sm:py-3 lg:py-4 bg-button-dark text-white text-base sm:text-lg border border-accent-green rounded-xl hover:bg-primary transition-colors font-medium cursor-pointer font-heading disabled:opacity-50 disabled:cursor-not-allowed"
+            >
+              {isLoading && submitIntentRef.current === 'submit'
+                ? (isEditMode ? 'Updating...' : 'Submitting...')
+                : (isEditMode ? 'Update & Submit' : 'Submit Innovation')}
+            </button>
             <button
               type="button"
               onClick={handleSaveDraft}
