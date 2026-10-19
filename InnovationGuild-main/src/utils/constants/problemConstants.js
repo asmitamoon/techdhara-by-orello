@@ -36,21 +36,36 @@ export const PROBLEM_SUBCATEGORY_OPTIONS = [
 ];
 
 // Service request unit types
-export const UNIT_TYPES = ['Branch', 'FPO', 'SHG'];
+export const UNIT_TYPES = ['Branch', 'FPO', 'SHG', 'Other'];
 
 export const UNIT_TYPE_OPTIONS = [
   { value: 'Branch', label: 'Branch' },
   { value: 'FPO', label: 'FPO' },
-  { value: 'SHG', label: 'SHG' }
+  { value: 'SHG', label: 'SHG' },
+  { value: 'Other', label: 'Other' }
 ];
 
 // Service request ownership options
-export const OWNERSHIP_TYPES = ['Dvara', 'FPO', 'Individual'];
+export const OWNERSHIP_TYPES = ['Techsetu', 'FPO', 'Individual'];
 
 export const OWNERSHIP_OPTIONS = [
-  { value: 'Dvara', label: 'Dvara' },
+  { value: 'Techsetu', label: 'Techsetu' },
   { value: 'FPO', label: 'FPO' },
   { value: 'Individual', label: 'Individual' }
 ];
 
 export const OWNERSHIP_INDIVIDUAL = 'Individual';
+
+// "Is the organization introducing new sales channels?" answers
+export const NEW_CHANNEL_OPTIONS = [
+  { value: 'Yes', label: 'Yes' },
+  { value: 'No', label: 'No' },
+  { value: 'Planning to', label: 'Planning to' }
+];
+
+// Older problems stored a free-text answer here. Keep that answer visible as an
+// extra choice so it isn't silently lost when the record is opened or edited.
+export const withLegacyOption = (options, currentValue) => {
+  if (!currentValue || options.some((opt) => opt.value === currentValue)) return options;
+  return [...options, { value: currentValue, label: `${currentValue} (previous answer)` }];
+};

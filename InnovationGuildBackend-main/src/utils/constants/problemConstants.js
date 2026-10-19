@@ -30,18 +30,19 @@ const PROBLEM_SUBCATEGORY_OPTIONS = [
   { value: 'production', label: 'Production' }
 ];
 
-const UNIT_TYPES = ['Branch', 'FPO', 'SHG'];
+const UNIT_TYPES = ['Branch', 'FPO', 'SHG', 'Other'];
 
 const UNIT_TYPE_OPTIONS = [
   { value: 'Branch', label: 'Branch' },
   { value: 'FPO', label: 'FPO' },
-  { value: 'SHG', label: 'SHG' }
+  { value: 'SHG', label: 'SHG' },
+  { value: 'Other', label: 'Other' }
 ];
 
-const OWNERSHIP_TYPES = ['Dvara', 'FPO', 'Individual'];
+const OWNERSHIP_TYPES = ['Techsetu', 'FPO', 'Individual'];
 
 const OWNERSHIP_OPTIONS = [
-  { value: 'Dvara', label: 'Dvara' },
+  { value: 'Techsetu', label: 'Techsetu' },
   { value: 'FPO', label: 'FPO' },
   { value: 'Individual', label: 'Individual' }
 ];

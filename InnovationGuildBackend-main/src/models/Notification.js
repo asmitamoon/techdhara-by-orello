@@ -43,7 +43,8 @@ const notificationSchema = new mongoose.Schema({
       'PILOT_REQUEST_SUBMITTED',
       'VLE_PILOT_REQUEST',
       'VLE_SUBMITTED_PROBLEM',
-      'VLE_REGISTERED_CONFIRMED'
+      'VLE_REGISTERED_CONFIRMED',
+      'BUSINESS_MODEL_SUBMITTED'
     ],
     required: true
   },

@@ -2,7 +2,7 @@ import { Link } from 'react-router'
 import Farmers from '../../assets/images/Farmers.png'
 
 const CTASection = ({
-  title = "Become Part of the Innovation Guild Community",
+  title = "Become Part of the TechDhaara Community",
   description = "Join thousands of Village Level Entrepreneurs working together to solve rural challenges and bring innovative solutions to communities across India.",
   buttonText = "Join as VLE",
   buttonLink = "/how-it-works"

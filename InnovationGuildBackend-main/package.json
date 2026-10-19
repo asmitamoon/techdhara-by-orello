@@ -10,7 +10,8 @@
     "seed:superadmin": "node src/seeders/superAdminSeeder.js",
     "seed:operations": "node src/seeders/masterOperationSeeder.js",
     "migrate": "node scripts/migrateFromExcel.js",
-    "recompute-matches": "node scripts/recomputeMatches.js"
+    "recompute-matches": "node scripts/recomputeMatches.js",
+    "migrate:dvara-to-techsetu": "node scripts/renameDvaraToTechsetu.js"
   },
   "repository": {
     "type": "git",

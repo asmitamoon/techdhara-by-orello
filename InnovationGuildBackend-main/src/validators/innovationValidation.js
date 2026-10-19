@@ -67,7 +67,7 @@ const innovationBodySchema = z.object({
       .transform(v => v.toLowerCase().trim())
   ).min(1, 'Select at least one operation').max(3, 'Select up to 3'),
   suitableCrops: z.string().max(200, 'Too long (max 200 characters)').optional(),
-  suitableTerrains: z.string().max(200, 'Too long (max 200 characters)').optional(),
+  suitableTerrains: z.string().max(500, 'Too long (max 500 characters)').optional(),
   suitableSoil: z.string().max(200, 'Too long (max 200 characters)').optional(),
   weatherConditions: z.string().max(200, 'Too long (max 200 characters)').optional(),
   otherUsageConditions: z.string().max(200, 'Too long (max 200 characters)').optional(),

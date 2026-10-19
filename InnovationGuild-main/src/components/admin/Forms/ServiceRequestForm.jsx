@@ -114,8 +114,8 @@ const ServiceRequestForm = forwardRef(({ initialData, isEditMode, onEditToggle, 
             <div className="space-y-4 sm:space-y-5 lg:space-y-6">
               <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
                 <div>
-                  <label className="form-label">Local Unit name (Branch / FPO / SHG)<span className="text-red-500">*</span></label>
-                  <div className="flex gap-4 mt-2">
+                  <label className="form-label">Local Unit name (Branch / FPO / SHG / Other)<span className="text-red-500">*</span></label>
+                  <div className="flex flex-wrap gap-4 mt-2">
                     {UNIT_TYPE_OPTIONS.map(opt => (
                       <label key={opt.value} className="flex items-center gap-2 cursor-pointer">
                         <input 
@@ -201,7 +201,7 @@ const ServiceRequestForm = forwardRef(({ initialData, isEditMode, onEditToggle, 
                   {errors.cost && <p className="text-red-500 text-xs mt-1">{errors.cost.message}</p>}
                 </div>
                 <div>
-                  <label className="form-label">Who has the ownership? (Dvara, FPO or an Individual)<span className="text-red-500">*</span></label>
+                  <label className="form-label">Who has the ownership? (Techsetu, FPO or an Individual)<span className="text-red-500">*</span></label>
                   <div className="flex gap-4 mt-2">
                     {OWNERSHIP_OPTIONS.map(opt => (
                       <label key={opt.value} className="flex items-center gap-2 cursor-pointer">

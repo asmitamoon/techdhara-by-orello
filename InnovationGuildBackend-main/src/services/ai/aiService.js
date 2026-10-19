@@ -231,7 +231,7 @@ const sanitizeProduct = (p) => {
     coveredOperations:     (p.coveredOperations ?? []).map(v => String(v).toLowerCase()).filter(v => VALID_OPERATIONS.includes(v)),
     manufacturingLocation: clean(p.manufacturingLocation)?.slice(0, 100) ?? null,
     suitableCrops:         clean(p.suitableCrops)?.slice(0, 200) ?? null,
-    suitableTerrains:      clean(p.suitableTerrains)?.slice(0, 200) ?? null,
+    suitableTerrains:      clean(p.suitableTerrains)?.slice(0, 500) ?? null,
     dimensions:            clean(p.dimensions)?.slice(0, 500) ?? null,
     weight:                clean(p.weight)?.slice(0, 50) ?? null,
     performanceParams:     clean(p.performanceParams)?.slice(0, 200) ?? null,

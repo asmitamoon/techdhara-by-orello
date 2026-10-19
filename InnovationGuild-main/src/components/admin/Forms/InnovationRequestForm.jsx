@@ -18,6 +18,8 @@ import {
 import { 
   PROBLEM_CATEGORY_OPTIONS, 
   PROBLEM_SUBCATEGORY_OPTIONS,
+  NEW_CHANNEL_OPTIONS,
+  withLegacyOption,
 } from '../../../utils/constants/problemConstants';
 
 const InnovationRequestForm = forwardRef(({ initialData, isEditMode, onEditToggle, onDataChange, onSubmit }, ref) => {
@@ -602,13 +604,20 @@ const InnovationRequestForm = forwardRef(({ initialData, isEditMode, onEditToggl
 
               <div>
                 <label className="form-label">Is the organization (AO) introducing new sales channels?<span className="text-red-500">*</span></label>
-                <input 
-                  type="text" 
-                  className={inputClass(errors.newChannels)} 
-                  placeholder="Your Answer" 
-                  readOnly={!isEditMode} 
-                  {...register('newChannels')} 
-                />
+                <div className="flex flex-wrap gap-6 mt-2">
+                  {withLegacyOption(NEW_CHANNEL_OPTIONS, watch('newChannels')).map(opt => (
+                    <label key={opt.value} className="flex items-center gap-2 cursor-pointer">
+                      <input 
+                        type="radio" 
+                        value={opt.value} 
+                        disabled={!isEditMode} 
+                        {...register('newChannels')} 
+                        className="w-4 h-4 text-accent-green-dark focus:ring-accent-green disabled:opacity-100" 
+                      />
+                      <span className="radio-label">{opt.label}</span>
+                    </label>
+                  ))}
+                </div>
                 {errors.newChannels && <p className="text-red-500 text-xs mt-1">{errors.newChannels.message}</p>}
               </div>
 

@@ -27,14 +27,14 @@ const ConsortiumSection = () => {
     {
       id: 1,
       badgeText: 'Foundation Partner',
-      description: 'Rainmatter Foundation, founded in 2021, supports climate action, ecosystem restoration, and related livelihoods. The foundation is the parent organisation and primary funder of Innovation Guild.',
+      description: 'Rainmatter Foundation, founded in 2021, supports climate action, ecosystem restoration, and related livelihoods. The foundation is the parent organisation and primary funder of TechDhaara.',
       logo: RainmatterLogo,
       logoWrapperClassName: 'h-20 md:h-32 mb-6 md:mb-10 flex items-center'
     },
     {
       id: 2,
       badgeText: 'Implementation Partner',
-      description: 'WASSAN is a public trust supporting sustainable livelihoods in rainfed regions. WASSAN India is the anchor organisation for the Village Level Entrepreneurship network of Innovation Guild.',
+      description: 'WASSAN is a public trust supporting sustainable livelihoods in rainfed regions. WASSAN India is the anchor organisation for the Village Level Entrepreneurship network of TechDhaara.',
       logo: WasanLogo,
       logoClassName: 'h-20 md:h-32 w-auto object-contain',
       logoWrapperClassName: 'h-20 md:h-32 mb-4 md:mb-10 flex items-center'
@@ -108,7 +108,7 @@ const ConsortiumSection = () => {
 
           {/* Subtitle */}
           <p className="text-lg md:text-3xl lg:text-4xl 2xl:text-[32px] leading-relaxed md:leading-[42px] font-heading font-normal text-[#273228] mb-12 md:mb-11 mx-auto text-center max-md:max-w-[900px]">
-            Innovation Guild is a collaborative initiative bringing together
+            TechDhaara is a collaborative initiative bringing together
             foundation support and grassroots expertise to bridge the gap between
             innovation and rural communities.
           </p>

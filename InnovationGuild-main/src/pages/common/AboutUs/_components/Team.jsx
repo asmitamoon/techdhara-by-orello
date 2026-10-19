@@ -16,14 +16,14 @@ export default function TeamSection() {
       name: "Asmita Moon",
       title: "Chief Executive Officer",
       image: asmita,
-      bio: "Asmita heads Innovation Guild covering the overall strategic and business development of the initiative. She has keen interest in technology inclusion for betterment of people and planet. Prior to this, Asmita has worked with grant programs providing business advisory to clean-tech startups. With trainings from London School of Economics and NITK Surathkal, Asmita is blending the worlds of technology and livelihoods.",
+      bio: "Asmita heads TechDhaara covering the overall strategic and business development of the initiative. She has keen interest in technology inclusion for betterment of people and planet. Prior to this, Asmita has worked with grant programs providing business advisory to clean-tech startups. With trainings from London School of Economics and NITK Surathkal, Asmita is blending the worlds of technology and livelihoods.",
       linkedin: "https://www.linkedin.com/in/asmita-moon/"
     },
     {
       name: "Dr. Sai Mohan",
       title: "Program Coordinator",
       image: mohan,
-      bio: "Sai is part of WASSAN India, facilitating innovation and entrepreneurship implementation of Innovation Guild. He leads and coordinates all on ground operations of the initiative. He has done Ph.D. in Agricultural Engineering, specialised in Farm Machinery and Power Engineering with a passion for agricultural innovation, machine design, and project management. His academic career has been fueled by research-driven solutions to enhance agricultural mechanization, bridging the gap between traditional practices and modern technology.",
+      bio: "Sai is part of WASSAN India, facilitating innovation and entrepreneurship implementation of TechDhaara. He leads and coordinates all on ground operations of the initiative. He has done Ph.D. in Agricultural Engineering, specialised in Farm Machinery and Power Engineering with a passion for agricultural innovation, machine design, and project management. His academic career has been fueled by research-driven solutions to enhance agricultural mechanization, bridging the gap between traditional practices and modern technology.",
       linkedin: "https://www.linkedin.com/in/sai-mohan-samala-a42348120/"
     },
     {

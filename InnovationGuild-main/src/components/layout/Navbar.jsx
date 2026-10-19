@@ -138,7 +138,7 @@ const Navbar = () => {
               <Link to="/" onClick={toggleMobileMenu} className={`transition-colors hover:text-accent-gold ${location.pathname === '/' ? 'text-accent-gold' : ''}`}>Home</Link>
               <Link to="/about-us" onClick={toggleMobileMenu} className={`transition-colors hover:text-accent-gold flex items-center gap-1 ${location.pathname === '/about-us' ? 'text-accent-gold' : ''}`}>About</Link>
               <Link to="/innovations" onClick={toggleMobileMenu} className={`transition-colors hover:text-accent-gold ${location.pathname === '/innovations' ? 'text-accent-gold' : ''}`}>Innovations</Link>
-              <Link to="/vles" onClick={toggleMobileMenu} className={`transition-colors hover:text-accent-gold ${location.pathname === '/vles' ? 'text-accent-gold' : ''}`}>VLEs</Link>
+              <Link to="/vles" onClick={toggleMobileMenu} className={`transition-colors hover:text-accent-gold ${location.pathname === '/vles' ? 'text-accent-gold' : ''}`}>TechDhaaraks</Link>
               <Link to="/problems" onClick={toggleMobileMenu} className={`transition-colors hover:text-accent-gold ${location.pathname === '/problems' ? 'text-accent-gold' : ''}`}>Problems</Link>
               <Link to="/resources" onClick={toggleMobileMenu} className={`transition-colors hover:text-accent-gold ${location.pathname === '/resources' ? 'text-accent-gold' : ''}`}>Resources</Link>
             </div>

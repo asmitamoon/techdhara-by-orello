@@ -3,6 +3,7 @@ const Pilot = require('../../../models/Pilot');
 const VleProfile = require('../../../models/VleProfile');
 const { AppError } = require('../../../utils/errorHandler');
 const catchAsync = require('../../../utils/catchAsync');
+const { sendBusinessModelSubmittedToAdmin } = require('../../../services/notification/admin/pilotNotification');
 
 const checkPilotInScope = async (pilotId, orgScope) => {
   const pilot = await Pilot.findById(pilotId).select('vleId innovationId').lean();
@@ -41,6 +42,10 @@ const createOrgBusinessModel = catchAsync(async (req, res, next) => {
     innovationId: pilot.innovationId,
     ...req.body,
   });
+
+  sendBusinessModelSubmittedToAdmin(bm, req.user).catch(err =>
+    console.error('Failed to send business model notification to admin:', err.message)
+  );
 
   res.status(201).json({ status: 'success', message: 'Business model created successfully', data: { businessModel: bm } });
 });
